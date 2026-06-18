@@ -1,7 +1,6 @@
 import {
   Landmark, Dices, Briefcase, Pickaxe, PawPrint,
-  TrendingUp, ShoppingCart, Ticket, Wrench, Lock,
-  Fish,
+  TrendingUp, ShoppingCart, Award, Wrench, Lock,
 } from 'lucide-react'
 
 export const CATEGORIES = [
@@ -15,11 +14,13 @@ export const CATEGORIES = [
       { name: '/deposit <amount | all>',  desc: 'Deposit coins into bank safety.',                 details: 'Cooldown: None · Protects coins from robberies' },
       { name: '/withdraw <amount | all>', desc: 'Withdraw coins to wallet for spending.',          details: 'Cooldown: None' },
       { name: '/pay <user> <amount>',    desc: 'Send wallet coins to another user.',              details: 'Cooldown: None · Action is irreversible' },
+      { name: '/gift <coins | item> <user>', desc: 'Gift items or coins to another user.',        details: 'Cooldown: None · Irreversible' },
+      { name: '/leaderboard [type] [scope]', desc: 'View server or global ranking leaderboards.', details: 'Cooldown: None · Sort by XP, wallet, bank' },
       { name: '/daily',                  desc: 'Claim daily allowance of 500-1000 coins.',        details: 'Cooldown: 24 hours' },
       { name: '/weekly',                 desc: 'Claim weekly allowance of 5000-8000 coins.',      details: 'Cooldown: 7 days' },
       { name: '/monthly',                desc: 'Claim monthly allowance of 25000-40000 coins.',   details: 'Cooldown: 30 days' },
       { name: '/beg',                    desc: 'Beg for spare change.',                           details: 'Cooldown: 45s · Payout: 20-120 coins' },
-      { name: '/search',                 desc: 'Search locations for loose change or items.',     details: 'Cooldown: 30s · Payout depends on risk level' },
+      { name: '/search',                 desc: 'Search funny locations for loose change or items.', details: 'Cooldown: 30s · Payout depends on risk level' },
     ],
   },
   {
@@ -38,10 +39,19 @@ export const CATEGORIES = [
       { name: '/cockfight <amount>',                desc: 'Bet on your active pet rooster.',                   details: 'Cooldown: 15s (Rooster recovery: 5m)' },
       { name: '/horserace <amount> <horse>',        desc: 'Bet on 1 of 5 horses.',                            details: 'Cooldown: 15s · Win: 2x to 8x (depends on odds)' },
       { name: '/scratchcard [tier]',                desc: 'Match 3 items on a 3x3 grid.',                     details: 'Cooldown: 15s · Win up to 20x' },
-      { name: '/mines <bet> [mines]',               desc: 'Reveal safe tiles to multiply your bet.',           details: 'Cooldown: 15s · Grid size: 4x4' },
+      { name: '/mines <bet> [mines]',               desc: 'Play Mines. Reveal safe tiles to multiply your bet.', details: 'Cooldown: 15s · Grid size: 4x4' },
+      { name: '/plinko <amount>',                   desc: 'Drop a ball down the Plinko board to win multipliers.', details: 'Cooldown: 15s · Multipliers: 0.5x to 4.0x' },
+      { name: '/dice <amount> <bet>',               desc: 'Roll a pair of dice and bet on results.',          details: 'Cooldown: 15s · Target options: Under/Over 7, Even/Odd, etc.' },
+      { name: '/hack',                              desc: 'Breach a secure mainframe by matching key sequence.', details: 'Cooldown: 30s · Requires speed & pattern matching' },
+      { name: '/scramble',                          desc: 'Scramble a word and guess the correct word.',      details: 'Cooldown: 30s · Earn: 150-250 coins' },
+      { name: '/trivia [difficulty]',               desc: 'Answer a trivia question and win coins.',          details: 'Cooldown: 30m · Difficulty: easy, medium, hard' },
+      { name: '/wordguess',                         desc: 'Play a Wordle-style word guessing game to win coins.', details: 'Cooldown: 45m · Guess the 5-letter word' },
+      { name: '/crime',                             desc: 'Commit a high-stakes crime for major payouts.',     details: 'Cooldown: 45s · Risks fine on failure' },
       { name: '/rob <target>',                      desc: 'Attempt to steal from another wallet.',             details: 'Cooldown: 10m · Success: 40% (fine on failure)' },
+      { name: '/bankrob <target>',                  desc: "Attempt to rob another user's bank.",               details: 'Cooldown: 1h · Success: 15% (fine on failure)' },
       { name: '/lottery buy <tickets>',             desc: 'Buy lottery tickets (100 coins each).',             details: 'Cooldown: None · Draw occurs every 24 hours' },
       { name: '/lottery info',                      desc: 'Check current lottery pot, round, and your tickets.', details: 'Cooldown: None' },
+      { name: '/lottery draw',                      desc: 'Draw the lottery winner.',                          details: 'Cooldown: Available 24h after last draw' },
     ],
   },
   {
@@ -60,20 +70,20 @@ export const CATEGORIES = [
   },
   {
     id: 'activities',
-    label: 'Activities',
+    label: 'Activities & Grinding',
     Icon: Pickaxe,
     color: '#10b981',
     commands: [
-      { name: '/hunt', desc: 'Hunt for game in the wilderness.',      details: 'Cooldown: 1h · Requires Hunting Rifle' },
-      { name: '/dig',  desc: 'Dig for buried treasures.',             details: 'Cooldown: 45m · Requires Shovel' },
-      { name: '/chop', desc: 'Chop down trees for valuable timber.',  details: 'Cooldown: 45m · Requires Axe' },
-      { name: '/mine', desc: 'Mine ore veins and rare gems.',         details: 'Cooldown: 45m · Requires Pickaxe' },
-      { name: '/fish', desc: 'Cast a fishing line.',                  details: 'Cooldown: 45m · Requires Fishing Pole' },
+      { name: '/hunt', desc: 'Hunt for game in the wilderness.',      details: 'Cooldown: 1h · Requires Hunting Rifle item' },
+      { name: '/dig',  desc: 'Dig for buried treasures.',             details: 'Cooldown: 45m · Requires Shovel item' },
+      { name: '/chop', desc: 'Chop down trees for valuable timber.',  details: 'Cooldown: 45m · Requires Axe item' },
+      { name: '/mine', desc: 'Mine ore veins and rare gems.',         details: 'Cooldown: 45m · Requires Pickaxe item' },
+      { name: '/fish', desc: 'Cast a fishing line.',                  details: 'Cooldown: 45m · Requires Fishing Pole item' },
     ],
   },
   {
     id: 'pets',
-    label: 'Pets',
+    label: 'Pets System',
     Icon: PawPrint,
     color: '#ec4899',
     commands: [
@@ -119,19 +129,25 @@ export const CATEGORIES = [
       { name: '/shop view [category]',     desc: 'Browse the shop items.',              details: 'Cooldown: None · Category filtering dropdown available' },
       { name: '/shop buy <item>',          desc: 'Buy permanent tools or consumables.', details: 'Cooldown: None · Tools are one-time purchase' },
       { name: '/shop sell <item> [amount]',desc: 'Sell gathered loot or items.',        details: 'Cooldown: None · Added to wallet balance' },
+      { name: '/craft',                    desc: 'Open the crafting bench to turn raw materials into upgraded tools.', details: 'Cooldown: None · Check recipes inside menu' },
+      { name: '/trade <user>',             desc: 'Trade coins and items with another player.', details: 'Cooldown: None · Both players must accept trade' },
       { name: '/inventory [user]',         desc: 'View owned items, tools, and value.', details: 'Cooldown: None · Displays estimated sell value' },
       { name: '/lootbox open <tier>',      desc: 'Open a lootbox from your inventory.', details: 'Cooldown: None · Rewards coins, XP, and consumable items' },
       { name: '/lootbox tiers',            desc: 'View all lootbox tiers, drop rates, and potential rewards.', details: 'Cooldown: None' },
     ],
   },
   {
-    id: 'lottery',
-    label: 'Lottery',
-    Icon: Ticket,
+    id: 'stats',
+    label: 'Stats & Rank',
+    Icon: Award,
     color: '#eab308',
     commands: [
-      { name: '/lottery buy <tickets>', desc: 'Buy lottery tickets (100 coins each).', details: 'Cooldown: None · Draw every 24 hours' },
-      { name: '/lottery info',          desc: 'Check pot, round, and your tickets.',   details: 'Cooldown: None' },
+      { name: '/profile [user]',           desc: 'View comprehensive statistics and wallet/bank/rank summary.', details: 'Cooldown: None' },
+      { name: '/rank [user]',              desc: 'Check level, total XP, and progression.',                   details: 'Cooldown: None · View level pay bonuses' },
+      { name: '/balance [user]',           desc: 'Check wallet, bank, and net worth.',                        details: 'Cooldown: None · Option: user (optional)' },
+      { name: '/achievements [user]',      desc: 'Check completed and locked career achievements.',           details: 'Cooldown: None' },
+      { name: '/streak [user]',            desc: 'Check daily claim and job work shift streaks.',             details: 'Cooldown: None' },
+      { name: '/quest',                    desc: 'View current daily quests and rewards progress.',           details: 'Cooldown: None · Resets every 24 hours' },
     ],
   },
   {
@@ -141,11 +157,9 @@ export const CATEGORIES = [
     color: '#38bdf8',
     commands: [
       { name: '/ping',               desc: 'Check bot latency.',                                        details: 'Cooldown: None' },
-      { name: '/rank [user]',        desc: 'Check level, total XP, and progression.',                   details: 'Cooldown: None · View level pay bonuses' },
       { name: '/cooldowns [user]',   desc: 'Check active action and reward cooldowns.',                 details: 'Cooldown: None · Option: user (optional)' },
-      { name: '/profile [user]',     desc: 'View a rich profile card with stats, job, and active pet.', details: 'Cooldown: None' },
-      { name: '/leaderboard <type>', desc: 'View top players by XP, coins, or net worth.',             details: 'Cooldown: None · Types: xp, coins, networth' },
       { name: '/help',               desc: 'Browse all bot commands by category.',                      details: 'Cooldown: None · Dropdown & page pagination' },
+      { name: '/resetprofile',       desc: 'Wipe your entire profile and start fresh. This cannot be undone.', details: 'Cooldown: None · Irreversible' },
     ],
   },
   {
@@ -157,8 +171,8 @@ export const CATEGORIES = [
       { name: '/admin balance-give <user> <amount>',      desc: 'Give coins to a user.',             details: 'Requires: Bot Developer' },
       { name: '/admin balance-remove <user> <amount>',    desc: 'Remove coins from a user.',         details: 'Requires: Bot Developer' },
       { name: '/admin balance-set <user> <amount>',       desc: "Set a user's balance directly.",    details: 'Requires: Bot Developer' },
-      { name: '/admin item-give <user> <item> [qty]',     desc: 'Give an item to a user.',           details: 'Requires: Bot Developer · Autocomplete support' },
-      { name: '/admin item-remove <user> <item> [qty]',   desc: 'Remove an item from a user.',       details: 'Requires: Bot Developer · Autocomplete support' },
+      { name: '/admin item-give <user> <item> [quantity]', desc: 'Give an item to a user.',          details: 'Requires: Bot Developer · Autocomplete support' },
+      { name: '/admin item-remove <user> <item> [quantity]', desc: 'Remove an item from a user.',    details: 'Requires: Bot Developer · Autocomplete support' },
       { name: '/admin xp-add <user> <amount>',            desc: 'Add XP to a user.',                 details: 'Requires: Bot Developer' },
       { name: '/admin cooldown-reset <user> <action>',    desc: 'Reset cooldowns for a user.',       details: 'Requires: Bot Developer' },
     ],
@@ -166,5 +180,11 @@ export const CATEGORIES = [
 ]
 
 export const ALL_COMMANDS = CATEGORIES.flatMap(cat =>
-  cat.commands.map(cmd => ({ ...cmd, category: cat.id, catLabel: cat.label, catColor: cat.color }))
+  cat.commands.map(cmd => ({
+    ...cmd,
+    category: cat.id,
+    catLabel: cat.label,
+    catColor: cat.color,
+    ...(cat.exchanges ? { exchanges: cat.exchanges } : {})
+  }))
 )
